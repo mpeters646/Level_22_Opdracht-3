@@ -9,7 +9,9 @@ const krijgIkEenNieuweiPhone = new Promise((resolve, reject) => {
     };
     resolve(smartphone);
   } else {
-    const metWelkeReden = new Error('Je bent stout geweest, geen cadeaus voor jou');
+    const metWelkeReden = new Error(
+      'Je bent stout geweest, geen cadeaus voor jou'
+    );
     reject(metWelkeReden);
   }
 });
@@ -38,7 +40,7 @@ Exercise 1:
 Write a function testNum that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 10. Log the result to the console.
 */
 
-const testNum = (num) => {
+const testNum = num => {
   return new Promise((resolve, reject) => {
     if (num > 10) {
       resolve(`${num} is greater then 10`);
@@ -49,18 +51,18 @@ const testNum = (num) => {
 };
 
 testNum(18)
-  .then((message) => {
+  .then(message => {
     console.log(message);
   })
-  .catch((message) => {
+  .catch(message => {
     console.log(message);
   });
 
 testNum(8)
-  .then((message) => {
+  .then(message => {
     console.log(message);
   })
-  .catch((message) => {
+  .catch(message => {
     console.log(message);
   });
 
@@ -74,12 +76,12 @@ Write two functions that use Promises that you can chain! The first function, ma
 Then call these functions by *chaining* the promises
 */
 
-const makeAllCaps = (words) => {
+const makeAllCaps = words => {
   return new Promise((resolve, reject) => {
-    if (words.every((word) => typeof word === 'string')) {
+    if (words.every(word => typeof word === 'string')) {
       resolve(
         sortWords(
-          words.map((word) => {
+          words.map(word => {
             return word.toUpperCase();
           })
         )
@@ -90,7 +92,7 @@ const makeAllCaps = (words) => {
   });
 };
 
-const sortWords = (words) => {
+const sortWords = words => {
   return new Promise((resolve, reject) => {
     if (words) {
       resolve(words.sort());
@@ -104,12 +106,12 @@ const theseAreWords = ['promise', 'practice', 'break'];
 
 makeAllCaps(theseAreWords)
   .then(sortWords(theseAreWords))
-  .then((result) => console.log(result))
-  .catch((error) => console.log(error));
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
 
 const theseAreNotWords = [1, 'hello', 9];
 
 makeAllCaps(theseAreNotWords)
   .then(sortWords(theseAreNotWords))
-  .then((result) => console.log(result))
-  .catch((error) => console.log(error));
+  .then(result => console.log(result))
+  .catch(error => console.log(error));
